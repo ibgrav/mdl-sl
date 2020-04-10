@@ -1,7 +1,6 @@
 'use strict';
 
 const request = require('request');
-const token = "Crusty5oil!";
 const url = "http://54.197.196.151/v1/graphql";
 
 module.exports.query = async (event) => {
@@ -20,7 +19,7 @@ function hasuraPost(data) {
     request({
       url: url,
       method: "POST",
-      headers: { 'x-hasura-admin-secret': token },
+      headers: { 'x-hasura-admin-secret': process.env.TOKEN },
       json: true,
       body: data
     }, function (error, response, body) {
